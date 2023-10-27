@@ -1,0 +1,66 @@
+Learan two data structures 
+  Array - dynamic array declaration, send an array to function, receive an array, array with pointers
+  Linked List - single and double linked list
+and learn basic operation in these data structures
+
+
+Array notes:
+
+- send an array to function
+  when we send an array to function and used range bound for loop for below program-
+
+#include <iostream>
+
+using namespace std;
+
+string search(int arr[],int num)
+{
+    for(auto x : arr)
+       { if(x == num)
+        return "found";
+       }
+       return "not found";
+}
+int main()
+{
+    int arr[] = {3,8,1,7,10,5};
+    
+    cout<<search(arr,5);
+
+    return 0;
+}
+
+Output - I got an error
+main.cpp: In function ‘std::string search(int*, int)’:
+main.cpp:15:18: error: ‘begin’ was not declared in this scope; did you mean ‘std::begin’?
+   15 |     for(auto x : arr)
+      |                  ^~~
+      |                  std::begin
+In file included from /usr/include/c++/11/string:54,
+                 from /usr/include/c++/11/bits/locale_classes.h:40,
+                 from /usr/include/c++/11/bits/ios_base.h:41,
+                 from /usr/include/c++/11/ios:42,
+                 from /usr/include/c++/11/ostream:38,
+                 from /usr/include/c++/11/iostream:39,
+                 from main.cpp:9:
+/usr/include/c++/11/bits/range_access.h:90:5: note: ‘std::begin’ declared here
+   90 |     begin(_Tp (&__arr)[_Nm]) noexcept
+      |     ^~~~~
+main.cpp:15:18: error: ‘end’ was not declared in this scope; did you mean ‘std::end’?
+   15 |     for(auto x : arr)
+      |                  ^~~
+      |                  std::end
+In file included from /usr/include/c++/11/string:54,
+                 from /usr/include/c++/11/bits/locale_classes.h:40,
+                 from /usr/include/c++/11/bits/ios_base.h:41,
+                 from /usr/include/c++/11/ios:42,
+                 from /usr/include/c++/11/ostream:38,
+                 from /usr/include/c++/11/iostream:39,
+                 from main.cpp:9:
+/usr/include/c++/11/bits/range_access.h:100:5: note: ‘std::end’ declared here
+  100 |     end(_Tp (&__arr)[_Nm]) noexcept
+      |     ^~~
+
+Reason - we got this error because, when an array is sent to a function , array parameter is adjusted to pointer variable
+so when we use auto x - x will of type iterator , so in iterator we need to use begin and end functions to traverse
+but as we are thinking x as int variable , we got error.
