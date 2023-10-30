@@ -1,0 +1,2 @@
+sorting algorithms
+reverse a single linked list using stack,recursion.
