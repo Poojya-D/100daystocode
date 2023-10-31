@@ -15,8 +15,6 @@ int main()
     int n = sizeof(arr)/sizeof(arr[0]);
     for(i = 0;i<n;i++ )
     {
-        //cout<<"start"<<endl;
-        //cout<<i<<" "<<arr[i]<<" "<<curr<<" "<<j<<endl;
         if(curr < sum)
         {
             curr = curr+arr[i];
@@ -27,16 +25,8 @@ int main()
             break;
         else
         {
-            //cout<<"else"<<endl;
-            while(j>0)
-            {
-                //cout<<i<<" "<<arr[i-1]<<" "<<curr<<" "<<j<<endl;
-                curr = curr-arr[i-1];
-                j-=1;
-                i-=1;
-                
-            }
-            
+            i = i-j+1;
+            curr=j=0;
         }
     }
     if(curr != sum)
