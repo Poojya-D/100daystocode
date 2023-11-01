@@ -65,7 +65,18 @@ void CircularLinkedList::insertatPos(int pos,int d)
     temp->next = newNode;
     
 }
-
+void CircularLinkedList::deleteElement(int d)
+{
+    Node *temp = head;
+    Node *prev = NULL;
+    while(temp->data != d)
+    {
+        prev = temp;
+        temp=temp->next;
+    }
+    prev->next = temp->next;
+    free(temp);
+}
 void CircularLinkedList::display()
 {
     Node *temp = head;
@@ -75,6 +86,7 @@ void CircularLinkedList::display()
         cout<<temp->data<<" ";
         temp= temp->next;
     }while(temp!=head);
+    cout<<endl;
 }
 int main()
 {
@@ -87,7 +99,8 @@ int main()
     list.insertatPos(3,8);
     
     list.display();
-    
+    list.deleteElement(3);
+    list.display();
 
     return 0;
 }
